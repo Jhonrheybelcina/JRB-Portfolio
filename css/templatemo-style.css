@@ -171,9 +171,12 @@ h1,h2,h3,h4,h5
 /* start home */       
 #home
 {
-    background: url('../images/home-bg.jpg');
-    background-size: 100% auto;
+    /* background: url('../images/home-bg.jpg'); */
+    /* background-size: 100% auto; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/home.jpeg');
+    background-size: cover auto;
     background-repeat: no-repeat;
+    /* background-position: 0% 20%; */
     padding-top: 120px;
     padding-bottom: 140px;
     text-align: center;
