@@ -26,11 +26,34 @@
 		<!-- custom -->
 		<link rel="stylesheet" href="css/templatemo-style.css">
 
+		<script>
+			function setActiveLink(link) {
+			  var links = document.querySelectorAll('.header a');
+			  for (var i = 0; i < links.length; i++) {
+				links[i].classList.remove('active');
+			  }
+			  link.classList.add('active');
+			}
+		  </script>
+		
+		  <style>
+			.header a.active {
+			  border-bottom: 2px solid red;
+			}
+			</style>
 	</head>
 	<body>
 
 	<div id="fullpage">
-
+ <div class="header" style="position: fixed; top: 0; left: 0; width: 100%;  z-index: 999; position: sticky;">
+    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
+	  <li style="float: right; margin: 10px;"><a href="#contact" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff; margin-right: 40px;">Contact</a></li>
+	  <li style="float: right; margin: 10px;"><a href="#portfolio" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">Projects</a></li>
+	  <li style="float: right; margin: 10px;"><a href="#about" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">My Skills</a></li>
+	  <li style="float: right; margin: 10px;"><a href="#work" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">About Me</a></li>
+	  <li style="float: right; margin: 10px;"><a href="#home" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">Home</a></li>
+    </ul>
+  </div>
 		<!-- start home -->
 		<div id="home" class="section">
 			<div class="container">
@@ -305,6 +328,7 @@
 		<!-- end footer -->
 
 	</div>
+	
 
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
@@ -321,5 +345,6 @@
 		<!-- custom -->
 		<script src="js/custom.js"></script>
 
+		
 	</body>
 </html>
