@@ -26,44 +26,82 @@
 		<!-- custom -->
 		<link rel="stylesheet" href="css/templatemo-style.css">
 
-		<script>
-			// JavaScript code to add active class on click
-			function setActiveLink(link) {
-			  var links = document.querySelectorAll('.header a');
-			  for (var i = 0; i < links.length; i++) {
-				links[i].classList.remove('active');
-			  }
-			  link.classList.add('active');
+		 <style>
+			body {
+				background-color: black;
 			}
-		
-			
-    // JavaScript code to add active class on click
-    function setActiveLink(link) {
-      var links = document.querySelectorAll('.header a');
-      for (var i = 0; i < links.length; i++) {
-        links[i].classList.remove('active');
-      }
-      link.classList.add('active');
-    }
-	</script>
-		  <style>
-			.header a.active {
-			  border-bottom: 2px solid red;
+	
+			.header {
+				position: fixed;
+				top: 0;
+				right: 0; /* Set the header to the right side */
+				width: 100%;
+				z-index: 999;
+				position: sticky;
 			}
-			</style>
+	
+			.header ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				display: flex; /* Display the navigation links in a row */
+				justify-content: flex-end; /* Align the navigation links to the right side */
+			}
+	
+			.header li {
+				margin: 10px;
+			}
+	
+			.header li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #fff;
+			}
+	
+			/* Media query for screens with a width less than or equal to 768px (typical phone or tablet size) */
+			@media screen and (max-width: 768px) {
+				.header ul {
+					display: none; /* Hide the navigation links by default */
+				}
+	
+				.header li {
+					float: none;
+					text-align: center;
+					margin: 0;
+					width: 100%;
+				}
+	
+				.burger {
+					display: block; /* Display the burger icon for small screens */
+					cursor: pointer;
+				}
+	
+				.cross {
+					display: none; /* Hide the cross icon initially */
+					cursor: pointer;
+				}
+			}
+		</style>
 	</head>
 	<body>
 
 	<div id="fullpage">
- <div class="header" style="position: fixed; top: 0; left: 0; width: 100%;  z-index: 999; position: sticky;">
-    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
-	  <li style="float: right; margin: 10px;"><a href="#contact" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff; margin-right: 40px;">Contact</a></li>
-	  <li style="float: right; margin: 10px;"><a href="#portfolio" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">Projects</a></li>
-	  <li style="float: right; margin: 10px;"><a href="#about" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">My Skills</a></li>
-	  <li style="float: right; margin: 10px;"><a href="#work" onclick="setActiveLink(this);" style="display: block; padding: 10px; text-decoration: none; color: #fff;">About Me</a></li>
-	  <li style="float: right; margin: 10px;"><a href="#home" onclick="setActiveLink(this);" class="active" style="display: block; padding: 10px; text-decoration: none; color: #fff;">Home</a></li>
-    </ul>
-  </div>
+		<div class="header">
+			<!-- Burger icon -->
+			<div class="burger" onclick="toggleNav()">☰</div>
+			<!-- Cross icon -->
+			<div class="cross" onclick="toggleNav()">✕</div>
+			<!-- Navigation links -->
+			<ul id="navLinks">
+				<li><a href="#home" onclick="setActiveLink(this);" class="active">Home</a></li>
+				<li><a href="#work" onclick="setActiveLink(this);">About Me</a></li>
+				<li><a href="#about" onclick="setActiveLink(this);">My Skills</a></li>
+				<li><a href="#portfolio" onclick="setActiveLink(this);">Projects</a></li>
+				<li><a href="#contact" onclick="setActiveLink(this);">Contact</a></li>
+			</ul>
+		</div>
 		<!-- start home -->
 		<div id="home" class="section">
 			<div class="container">
@@ -363,4 +401,52 @@
 
 		
 	</body>
+	
+<script>
+    // JavaScript function to toggle the navigation links when the burger or cross icon is clicked
+    function toggleNav() {
+        var navLinks = document.getElementById("navLinks");
+        var burger = document.querySelector(".burger");
+        var cross = document.querySelector(".cross");
+
+        if (navLinks.style.display === "none") {
+            navLinks.style.display = "flex";
+            burger.style.display = "none";
+            cross.style.display = "block";
+        } else {
+            navLinks.style.display = "none";
+            burger.style.display = "block";
+            cross.style.display = "none";
+        }
+    }
+
+    // Function to set the active link (You can implement this function as per your requirement)
+    function setActiveLink(link) {
+        // Your code to handle setting the active link
+    }
+
+    // Function to check screen size and display appropriate header
+    function checkScreenSize() {
+        var isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+        var burger = document.querySelector(".burger");
+        var cross = document.querySelector(".cross");
+        var navLinks = document.getElementById("navLinks");
+
+        if (isSmallScreen) {
+            burger.style.display = "block";
+            cross.style.display = "none"; // Hide the cross icon for small screens
+            navLinks.style.display = "none"; // Hide the navigation links for small screens
+        } else {
+            burger.style.display = "none"; // Hide the burger icon for larger screens
+            cross.style.display = "none"; // Hide the cross icon for larger screens
+            navLinks.style.display = "flex"; // Show the navigation links for larger screens
+        }
+    }
+
+    // Initial check when the page loads
+    checkScreenSize();
+
+    // Add an event listener to recheck when the window is resized
+    window.addEventListener('resize', checkScreenSize);
+</script>
 </html>
